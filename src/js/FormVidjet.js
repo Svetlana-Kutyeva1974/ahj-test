@@ -19,21 +19,21 @@ export default class FormWidget {
       <div class="col col6"></div>
     </div>
   </div>
-  <form data-widget="innogrn-form-widget" class="flex">
+  <form data-widget="form-widget" class="flex">
   <div class="form-control">
-    <input id="innorgn-input" data-id="innogrn-input" type="text">
+    <input id="form-input" data-id="form-input" type="text">
   </div>
-  <button data-id="innogrn-submit">Проверить</button>
+  <button class = "button" data-id="form-submit">Проверить</button>
   </form>
     `;
   }
 
   static get inputSelector() {
-    return '[data-id=innogrn-input]';
+    return '[data-id=form-input]';
   }
 
   static get submitSelector() {
-    return '[data-id=innogrn-submit]';
+    return '[data-id=form-submit]';
   }
 
   bindToDOM() {
@@ -46,16 +46,23 @@ export default class FormWidget {
   onSubmit(evt) {
     evt.preventDefault();
     const inputEl = this.parentEl.querySelector(this.constructor.inputSelector);
+    const pay = this.parentEl.children[0].querySelector(paySystem(inputEl.value));
     if (isValid(inputEl.value)) {
       inputEl.classList.add('valid');
 
       // const paycol = paySystem(inputEl.value);
-      const pay = this.parentEl.children[0].querySelector(paySystem(inputEl.value));
       pay.classList.add('select');
       console.log('pay', pay, inputEl.value, paySystem(inputEl.value), `${paySystem(inputEl.value)}`);
     } else {
       inputEl.classList.add('invalid');
       alert('Введенное значение некорректно!');
     }
+    inputEl.value = '';
+    inputEl.reset();
+    (inputEl.classList.contains('valid')) ? inputEl.classList.remove('valid') : inputEl.classList.remove('invalid');
+    (pay.classList.contains('select')) ? pay.classList.remove('select') : console.log('ok');
+    console.log('result', inputEl.value);
+    // this.parentEl.bindToDOM();
+    document.querySelector('#form-container').bindToDOM();
   }
 }

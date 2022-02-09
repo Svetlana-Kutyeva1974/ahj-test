@@ -1,7 +1,8 @@
 import puppetteer from 'puppeteer';
 import { fork } from 'child_process';
+// const childProcess = require('child_process');
 
-jest.setTimeout(30000); // default puppeteer timeout
+jest.setTimeout(50000); // default puppeteer timeout
 
 describe('Credit Card Validator form', () => {
   let browser = null;
@@ -21,12 +22,12 @@ describe('Credit Card Validator form', () => {
     });
 
     browser = await puppetteer.launch({
-      // headless: false, // show gui
-      // slowMo: 250,
+      headless: false, // show gui
+      slowMo: 450,
       // devtools: true, // show devTools
     });
     page = await browser.newPage();
-    // await page.goto(baseUrl);? или здесь
+    // await page.goto(baseUrl);// ? или здесь
   });
 
   afterAll(async () => {
@@ -34,24 +35,25 @@ describe('Credit Card Validator form', () => {
     server.kill();
   });
 
-  test('should add do something', async () => {
+  test('Должен добавить класс valid если номер валидный', async () => {
     await page.goto(baseUrl);
 
-    const form = await page.$('.widget__form');
-    const input = await form.$('.input');
-    await input.type('4539499701100246');
-    const submit = await form.$('.button');
+    const form = await page.$('[data-widget=form-widget]');
+    const input = await form.$('[data-id=form-input]');
+    await input.type('44561261212345467');
+    const submit = await form.$('[data-id=form-submit]');
     submit.click();
-    await page.waitForSelector('.input.bgValid');
+    await page.waitForSelector('[data-id=form-input].valid');
   });
 
-  test('Должен добавить класс bgInvalid если номер не валидный', async () => {
+  test('Должен добавить класс invalid если номер не валидный', async () => {
     await page.goto(baseUrl);
-    const form = await page.$('.widget__form');
-    const input = await form.$('.input');
-    await input.type('4539499701100247');
-    const submit = await form.$('.button');
+
+    const form = await page.$('[data-widget=form-widget]');
+    const input = await form.$('[data-id=form-input]');
+    await input.type('44561261212345464');
+    const submit = await form.$('[data-id=form-submit]');
     submit.click();
-    await page.waitForSelector('.input.bgInvalid');
+    await page.waitForSelector('[data-id=form-input].invalid');
   });
 });
