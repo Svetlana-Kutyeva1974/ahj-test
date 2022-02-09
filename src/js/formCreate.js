@@ -35,3 +35,13 @@ const t = `<!DOCTYPE html>
 </body>
 </html>`;
 console.log(t);
+/*
+<div class="card">
+  <div class="row row-cols-4">
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+  </div>
+</div>
+*/

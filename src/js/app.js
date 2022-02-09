@@ -1,3 +1,20 @@
+/**
+ * Entry point of app:
+ */
+
+import FormVidjet from './FormVidjet.js';
+// import GameController from './GameController.js';
+// import GameStateService from './GameStateService.js';
+
+const formVidjet = new FormVidjet(document.querySelector('#form-container'));
+formVidjet.bindToDOM();
+
+// const stateService = new GameStateService(localStorage);
+
+// const gameCtrl = new GameController(gamePlay, stateService);
+// gameCtrl.init();
+
+/*
 import Board from './board.js';
 import Img from './imgCreate.js';
 
@@ -51,7 +68,6 @@ function changeField() {
   // console.log('счетчик изменений', countChange);
   if (loss === 5 || (countChange - count - loss) === 5) {
     clearInterval(id);
-    alert(`Игра окончена! \n Появилось : ${countChange}\n ------------ \n Попаданий при клике : ${count}  \n Допущено промахов при клике : ${loss}\n Пропущено появлений в ячейках : ${countChange - count - loss}`);
   }
   countChange += 1;
 }
@@ -72,3 +88,4 @@ fullBoard.addEventListener('click', (event) => {
 });
 
 id = setInterval(() => changeField.call(arrField), 1000);
+*/

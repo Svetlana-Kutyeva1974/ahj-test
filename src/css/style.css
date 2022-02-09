@@ -1,15 +1,44 @@
+.form-container-style {
+  width: 500px;
+  background-color: rgb(171, 196, 233);
+  color: rgb(223, 128, 128);
+  text-align: center;
+  margin: auto;
+  height: 50px;
+  
+}
+.flex{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+}
+
+.style-img {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
 button {
   margin: 0 !important;
 }
 
 .card {
-  width: 600px;
+  width: 500px;
+  height: 50px;
 }
 
 .header {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
+/*
 .tasks__control {
   display: flex;
   justify-content: space-between;
@@ -70,8 +99,8 @@ button {
   text-decoration: none;
   cursor: pointer;
 }
+*/
 
-/*
 * {
     box-sizing: border-box;
 }
@@ -80,20 +109,13 @@ button {
     text-align: center;
 }
 
-
-
-#board {
-    position: relative;
-    height: 450px;
-    width: 450px;
-    margin: 50px auto 30px auto;
-    overflow: hidden;
-    display: grid;
-    grid-auto-columns: 1fr;
-    grid-auto-rows: 1fr;
-    grid-gap: 10px;
+#form-container {
+    height: 50px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
 }
-
+/*
 .field {
     background-color: rgb(200, 255, 129);
     border-radius: 50%;
@@ -105,17 +127,28 @@ button {
     font-size: 5em;
     font-family: 'Arial', sans-serif;
 }
-
-.style-img {
+*/
+.col {
     box-sizing: border-box;
     width: 100%;
+    height: 100%;
+}
+
+
+.select{
+  border: 2px solid black;
+  border-radius: 2%;
+}
+
+.invalid:hover {
+  background-color: #e46a74;
+  border-width: 2px;
+}
+
+.valid {
+  background-color: #bff0c3;
 }
 /*
-
-.free:hover {
-    background-color: #3d4250;
-}
-*/
 .busy {
     cursor: url("../img/mol.jpg") , auto;
 }
@@ -124,3 +157,5 @@ button {
     background-color: rgb(10, 10, 10);
     border-radius: 50%;
 }
+*/
+
