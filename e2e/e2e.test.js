@@ -40,7 +40,7 @@ describe('Credit Card Validator form', () => {
 
     const form = await page.$('[data-widget=form-widget]');
     const input = await form.$('[data-id=form-input]');
-    await input.type('44561261212345467');
+    await input.type('379791071524836');
     const submit = await form.$('[data-id=form-submit]');
     submit.click();
     await page.waitForSelector('[data-id=form-input].valid');

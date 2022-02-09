@@ -21,7 +21,7 @@ export default class FormWidget {
   </div>
   <form data-widget="form-widget" class="flex">
   <div class="form-control">
-    <input id="form-input" data-id="form-input" type="text">
+    <input id="form-input" data-id="form-input" type="text" minlength="2" maxlength="19">
   </div>
   <button class = "button" data-id="form-submit">Проверить</button>
   </form>
@@ -36,6 +36,10 @@ export default class FormWidget {
     return '[data-id=form-submit]';
   }
 
+  static get formSelector() {
+    return '[data-widget=form-widget]';
+  }
+
   bindToDOM() {
     this.parentEl.innerHTML = this.constructor.markup;
     const submit = this.parentEl.querySelector(this.constructor.submitSelector);
@@ -45,24 +49,38 @@ export default class FormWidget {
 
   onSubmit(evt) {
     evt.preventDefault();
+    // const form = this.parentEl.querySelector(this.constructor.formSelector);
     const inputEl = this.parentEl.querySelector(this.constructor.inputSelector);
     const pay = this.parentEl.children[0].querySelector(paySystem(inputEl.value));
+    // снимаем разметку
+    (pay.classList.contains('select')) ? pay.classList.remove('select') : console.log('o');
+    (inputEl.classList.contains('valid'))
+      ? inputEl.classList.remove('valid') : console.log('not valid');
+    (inputEl.classList.contains('invalid'))
+      ? inputEl.classList.remove('invalid') : console.log('not invalid');
+    //--
     if (isValid(inputEl.value)) {
       inputEl.classList.add('valid');
 
       // const paycol = paySystem(inputEl.value);
       pay.classList.add('select');
-      console.log('pay', pay, inputEl.value, paySystem(inputEl.value), `${paySystem(inputEl.value)}`);
+      alert('Введенное значение корректно!');
+      console.log('good pay', pay, inputEl.value, paySystem(inputEl.value), `${paySystem(inputEl.value)}`);
     } else {
       inputEl.classList.add('invalid');
       alert('Введенное значение некорректно!');
     }
+    console.log('result', inputEl.value);
     inputEl.value = '';
     // inputEl.reset();
-    (inputEl.classList.contains('valid')) ? inputEl.classList.remove('valid') : inputEl.classList.remove('invalid');
-    (pay.classList.contains('select')) ? pay.classList.remove('select') : console.log('ok');
-    console.log('result', inputEl.value);
+    // form.reset();
+    /*
+    (inputEl.classList.contains('valid'))
+     ? inputEl.classList.remove('valid') : inputEl.classList.remove('invalid');
+    (pay.classList.contains('select')) ? pay.classList.remove('select') : console.log('o');
+    */
+    console.log('result null', inputEl.value);
     // this.parentEl.bindToDOM();
-    document.querySelector('#form-container').bindToDOM();
+    // document.querySelector('#form-container').bindToDOM();
   }
 }
