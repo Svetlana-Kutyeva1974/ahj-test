@@ -58,7 +58,7 @@ export default class FormWidget {
       alert('Введенное значение некорректно!');
     }
     inputEl.value = '';
-    inputEl.reset();
+    // inputEl.reset();
     (inputEl.classList.contains('valid')) ? inputEl.classList.remove('valid') : inputEl.classList.remove('invalid');
     (pay.classList.contains('select')) ? pay.classList.remove('select') : console.log('ok');
     console.log('result', inputEl.value);
