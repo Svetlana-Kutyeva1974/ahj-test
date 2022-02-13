@@ -150,6 +150,11 @@ button {
 .valid {
   background-color: #bff0c3;
 }
+
+.invalid {
+ border: 1px solid red; 
+}
+
 /*
 .busy {
     cursor: url("../img/mol.jpg") , auto;
