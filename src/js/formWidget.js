@@ -54,7 +54,8 @@ export default class FormWidget {
   onSubmit(evt) {
     evt.preventDefault();
     const inputEl = this.parentEl.querySelector(this.constructor.inputSelector);
-    const value = String(inputEl.value).trim();
+    let value = String(inputEl.value).trim();
+    value = String(value).replace(/\D/g, '');
     if (this.isValidate(value) && value[0] !== 0) {
       if (paySystem(value) !== '') {
         const pay = this.parentEl.children[0].querySelector(paySystem(value));
