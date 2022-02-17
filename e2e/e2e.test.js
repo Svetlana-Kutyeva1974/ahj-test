@@ -1,4 +1,4 @@
-import puppetteer from 'puppeteer';
+import puppeteer from 'puppeteer';
 import { fork } from 'child_process';
 // const childProcess = require('child_process');
 
@@ -21,7 +21,7 @@ describe('Credit Card Validator form', () => {
       });
     });
 
-    browser = await puppetteer.launch({
+    browser = await puppeteer.launch({
       headless: false, // show gui
       slowMo: 450,
       // devtools: true, // show devTools
@@ -51,7 +51,7 @@ describe('Credit Card Validator form', () => {
 
     const form = await page.$('[data-widget=form-widget]');
     const input = await form.$('[data-id=form-input]');
-    await input.type('44561261212345464');
+    await input.type('4561261212345464');
     const submit = await form.$('[data-id=form-submit]');
     submit.click();
     await page.waitForSelector('[data-id=form-input].invalid');

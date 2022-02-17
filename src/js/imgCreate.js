@@ -48,7 +48,6 @@ export default class Img {
   static divIn() {
     for (let i = 1; i < 7; i += 1) {
       const imgNew = Img.create(i);
-      console.log('imgNew', imgNew);
       const element = document.querySelector(`.col${i}`);
       element.insertAdjacentElement('afterBegin', imgNew);
     }
