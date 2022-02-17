@@ -35,11 +35,12 @@ export default function paySystem(value) {
   console.log('slice---', +value1.slice(0, 6));
   if ([51, 52, 53, 54, 55].includes(value1.slice(0, 2))
   || ((+value1.slice(0, 6) >= 222100) && (+value1.slice(0, 6) <= 272099))) {
-    paysystem = 'div.col.col6'; // 'maestro';
+    paysystem = 'div.col.col3'; // master;
   }
   console.log('value---', value1[0], paysystem);
   return paysystem;
 }
+
 // 4561 2612 1234 5464
 // 4561 2612 1234 5467 true
 // 379791071524836 true

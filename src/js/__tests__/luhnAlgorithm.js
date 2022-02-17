@@ -1,8 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-// import '@testing-library/jest-dom/extend-expect';
-// import './__tests__/jest-dom/extend-expect.js';
 import luhnAlgorithm from '../luhnAlgorithm.js';
 
 describe('Функция IsValid должен работать корректно', () => {

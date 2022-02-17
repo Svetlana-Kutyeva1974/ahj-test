@@ -71,4 +71,6 @@ button {
   background-color: #bff0c3;
 }
 
-
+.invalid {
+ border: 1px solid red; 
+}
