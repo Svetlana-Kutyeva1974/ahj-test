@@ -1,7 +1,5 @@
 export default function paySystem(value) {
-  // const value1 = value.replace(/\D/g, '');
   const value1 = String(value).replace(/\D/g, '');
-  console.log('value firts---', value1);
   let paysystem = '';
   switch (value1[0]) {
     case '2':
@@ -32,12 +30,10 @@ export default function paySystem(value) {
   if (value1[0] === '3' && (value1[1] === '4' || value1[1] === '7')) {
     paysystem = 'div.col.col1';
   }
-  console.log('slice---', +value1.slice(0, 6));
   if ([51, 52, 53, 54, 55].includes(value1.slice(0, 2))
   || ((+value1.slice(0, 6) >= 222100) && (+value1.slice(0, 6) <= 272099))) {
     paysystem = 'div.col.col3'; // master;
   }
-  console.log('value---', value1[0], paysystem);
   return paysystem;
 }
 
