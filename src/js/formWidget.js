@@ -51,6 +51,21 @@ export default class FormWidget {
     Img.divIn();
   }
 
+  showMessage(text) {
+    console.log('text+ this', text, this);
+    const messageEl = document.createElement('div');
+    messageEl.innerHTML = text;
+    messageEl.style = 'text-align :left';
+    const form = this.parentEl.querySelector(this.constructor.formSelector);
+    form.insertAdjacentElement('afterEnd', messageEl);
+  }
+
+  removeMessageAndClass(text) {
+    this.parentEl.querySelector(this.constructor.inputSelector).classList.add('invalid');
+    this.showMessage(text);
+    setTimeout(() => this.parentEl.children[2].remove(), 1000);
+  }
+
   onSubmit(evt) {
     evt.preventDefault();
     const inputEl = this.parentEl.querySelector(this.constructor.inputSelector);
@@ -69,25 +84,22 @@ export default class FormWidget {
         if (luhnAlgorithm(value)) {
           inputEl.classList.add('valid');
           pay.classList.add('select');
-          const id = setInterval(() => alert('Введенное значение корректно!'), 1000);
-          // 'Введенное значение корректно!'
-          clearInterval(id);
-          // Удаляем визуализацию
-          setInterval(() => {
+          this.showMessage('Введенное значение корректно!');
+          setTimeout(() => {
             pay.classList.remove('select');
             inputEl.classList.remove('valid');
+            this.parentEl.children[2].remove();
           }, 1000);
+
           console.log('good pay', pay, inputEl.value, value, paySystem(value), `${paySystem(value)}`);
         } else {
-          inputEl.classList.add('invalid');
-          alert('Введенное значение некорректно!');
+          this.removeMessageAndClass('Введенное значение некорректно!');
         }
-        // inputEl.value = '';
       } else {
-        alert('Ошибка ввода, карта не существует!');
+        this.removeMessageAndClass('Ошибка ввода, карта не существует!');
       }
     } else {
-      alert('Ошибка ввода, число символов или символы некорректны!');
+      this.removeMessageAndClass('Ошибка ввода, число символов или символы некорректны!');
     }
     inputEl.value = '';
   }
