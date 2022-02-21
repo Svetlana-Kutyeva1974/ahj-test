@@ -52,7 +52,6 @@ export default class FormWidget {
   }
 
   showMessage(text) {
-    console.log('text+ this', text, this);
     const messageEl = document.createElement('div');
     messageEl.innerHTML = text;
     messageEl.style = 'text-align :left';
@@ -90,8 +89,6 @@ export default class FormWidget {
             inputEl.classList.remove('valid');
             this.parentEl.children[2].remove();
           }, 1000);
-
-          console.log('good pay', pay, inputEl.value, value, paySystem(value), `${paySystem(value)}`);
         } else {
           this.removeMessageAndClass('Введенное значение некорректно!');
         }

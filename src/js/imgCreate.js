@@ -38,7 +38,6 @@ export default class Img {
         break;
     }
 
-    console.log('png', png);
     imgEl.src = png;
     imgEl.alt = 'Текущее положение';
     imgEl.classList.add('style-img');

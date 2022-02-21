@@ -1,6 +1,5 @@
 export default function luhnAlgorithm(value) {
   const value1 = String(value).replace(/\D/g, '');// String(value).replace(/[^\d]/g, '');
-  console.log('value, value1---', value, value1);
 
   let nCheck = 0;
   let bEven = false;
@@ -15,7 +14,6 @@ export default function luhnAlgorithm(value) {
     nCheck += nDigit;
     bEven = !bEven;
   }
-  console.log('отправляем ---', nCheck, (nCheck % 10) === 0);
   let result = false;
   if (value1[0] === '0') {
     result = false;
